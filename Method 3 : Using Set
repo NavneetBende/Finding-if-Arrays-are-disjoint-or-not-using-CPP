@@ -1,0 +1,33 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int disjoint(int arr1[], int arr2[], int n, int m){
+    
+    set st;
+ 
+    // Traverse the first set and store its elements in hash
+    for (int i = 0; i < n; i++)
+        st.insert(arr1[i]);
+ 
+    // Traverse the second set and check if any element of it
+    // is already in hash or not.
+    for (int i = 0; i < m; i++)
+        if (st.find(arr2[i]) != st.end())
+            return 0;
+ 
+    return 1;
+}
+
+int main(){
+    
+    int arr1[] = {10, 20, 30, 67};
+    int arr2[] = {20, 90, 80, 77, 23};
+    int n = sizeof(arr1)/sizeof(arr1[0]);
+    int m = sizeof(arr2)/sizeof(arr2[0]);
+    
+    if(disjoint(arr1, arr2, n, m))
+    cout<<"Yes";
+    
+    else cout<<"No";
+    
+}
