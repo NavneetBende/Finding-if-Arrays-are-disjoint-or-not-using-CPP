@@ -1,0 +1,36 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int disjoint(int arr1[], int arr2[], int n, int m){
+    
+    sort(arr1, arr1+n);
+    sort(arr2, arr2+m);
+    
+    // Check for same elements using merge like process
+    int i = 0, j = 0;
+    while (i < m && j < n)
+    {
+        if (arr1[i] < arr2[j])
+            i++;
+        else if (arr2[j] < arr1[i])
+            j++;
+        else /* if set1[i] == set2[j] */
+            return 0;
+    }
+ 
+    return 1;
+}
+
+int main(){
+    
+    int arr1[] = {10, 20, 30, 67};
+    int arr2[] = {20, 90, 80, 77, 23};
+    int n = sizeof(arr1)/sizeof(arr1[0]);
+    int m = sizeof(arr2)/sizeof(arr2[0]);
+    
+    if(disjoint(arr1, arr2, n, m))
+    cout<<"Yes";
+    
+    else cout<<"No";
+    
+}
